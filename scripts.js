@@ -1,9 +1,20 @@
 const form = document.querySelector("[data-form]");
 const result = document.querySelector("[data-result]");
 
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
+
+const numerator = document.getElementById("dividend").value;
+const denominator = document.getElementById("divider").value;
+  
+if (numerator === "" || denominator === ""){
+result.textContent = "Division not performed. Both values are required in inputs. Try again"
+return false;
+}
+
   const entries = new FormData(event.target);
   const { dividend, divider } = Object.fromEntries(entries);
-  result.innerText = dividend / divider;
+  result.innerText = Math.floor(dividend / divider);
+
 });
